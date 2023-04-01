@@ -67,7 +67,7 @@ RUN git clone --depth 1 --branch ${OPENCV_VERSION} https://github.com/opencv/ope
         -D WITH_CUDNN=ON \
         -D WITH_GSTREAMER=ON \
         -D WITH_LIBV4L=ON \
-        -D WITH_OPENGL=ON \
+        -D WITH_OPENGL=OFF \
 	   -D WITH_OPENCL=OFF \
 	   -D WITH_IPP=OFF \
         -D WITH_TBB=ON \
@@ -76,7 +76,7 @@ RUN git clone --depth 1 --branch ${OPENCV_VERSION} https://github.com/opencv/ope
 	   -D BUILD_TESTS=OFF \
 	   ../
 	   
-RUN cd opencv/build && make -j$(nproc)
+RUN cd opencv/build && make
 RUN cd opencv/build && make install
 RUN cd opencv/build && make package
 
